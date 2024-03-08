@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+}
+
+.container{
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.slider{
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.item{
+    display: none;
+}
+
+.item img{
+    height: 400px;
+    object-fit: cover;
+}
+
+.active{
+    display: block;
+}
+
+.prev{
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+}
+
+.next{
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 20px
+}
