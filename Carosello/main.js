@@ -6,6 +6,16 @@
 // Tutte le immagini saranno nascoste, tranne la prima, che avrà una classe specifica che la renderà visibile.
 // Al termine di questa fase ci ritroveremo con lo stesso slider stilato nella milestone 1, ma costruito dinamicamente attraverso JavaScript.
 
+// BONUS 1:
+// Aggiungere il ciclo infinito del carosello.
+// Ovvero se è attiva la prima immagine e l'utente clicca la freccia per andare all’immagine precedente, dovrà comparire l’ultima immagine dell’array e viceversa.
+
+
+
+
+
+
+
 
 // CREO UN ARRAY CONTENENTE LE IMMAGINI (array di stringhe)
 
@@ -26,7 +36,8 @@ const itemsSlider = document.querySelector('.items-slider') ;
 
 let itemsHTML = '' ;
 
-// CREO UN CICLO for PER
+
+// CREO UN CICLO for PER ASSEGNARE GLI ELEMENTI NEL DOM E IL CONTENUTO DELL'ARRAY 
 
 for(let i = 0; i < imgsArray.length; i++){
     //console.log di controllo
@@ -66,7 +77,7 @@ itemsSlider.innerHTML = itemsHTML ;
 const divItemList = document.getElementsByClassName('item') ;
 
 
-// CREO UNA VARIABILE PER L'ASSEGNAZIONE DELLA CLASSE
+// CREO UNA VARIABILE PER L'ASSEGNAZIONE DELLA CLASSE ALL'ELEMENTO
 // COSI' DA NON DOVERLA RIPETERE SUCCESSIVAMENTE PER OGNI EVENTO AL CLICK
 
 let activeItem = 0 ;
@@ -90,9 +101,19 @@ next.addEventListener('click', function(){
 
     activeItem++
 
+    
+    // BONUS
+    // SE ARRIVA ALL'ULTIMO ELEMENTO DELL'ARRAY [4] (<- elemento dell'array parte da 0, essendo 5 l'ultimo elemento sarà il 4)
+    // ALLORA DEVE TORNARE AL PRIMO ELEMENTO [0] (<- primo elemento dell'array)
+    if(activeItem === imgsArray.length){
+        activeItem = 0
+    }
+
+
     // AGGIUNGO ALLA VARIABILE divItemList LA CLASSE active (.classList.add)
 
     divItemList[activeItem].classList.add('active') ;
+
 
 })
 
@@ -107,6 +128,21 @@ prev.addEventListener('click', function(){
 
     activeItem--
 
+    
+
+    // BONUS
+    // SE PARTO DAL PRIMO ELEMENTO DELL'ARRAY [0]
+    // ALLORA DEVE PASSARE ALL'ULTIMO ELEMENTO [4]
+
+    if(activeItem < 0){
+        activeItem = imgsArray.length - 1
+    }
+
+
     divItemList[activeItem].classList.add('active') ;
 
 })
+
+
+
+
